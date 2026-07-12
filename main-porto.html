@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eva Murtiawani — Berkas Profesional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B2A41;
+    --ink-light:#4B5A70;
+    --paper:#EEEDE5;
+    --paper-deep:#E4E2D6;
+    --card:#FBFAF6;
+    --stamp:#A63A2C;
+    --seal:#3F6E68;
+    --gold:#A9873F;
+    --line:#D3CFC0;
+    --serif:'Fraunces', serif;
+    --sans:'IBM Plex Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--stamp);color:#fff;}
+
+  a{color:inherit;}
+
+  .container{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Folder tab nav ---------- */
+  .tabnav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    overflow-x:auto;
+    scrollbar-width:none;
+  }
+  .tabnav::-webkit-scrollbar{display:none;}
+  .tabnav-inner{
+    max-width:920px;
+    margin:0 auto;
+    display:flex;
+    gap:2px;
+    padding:0 32px;
+  }
+  .tabnav a{
+    flex:0 0 auto;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    text-decoration:none;
+    color:var(--ink-light);
+    padding:14px 14px 12px;
+    border-bottom:2px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+    white-space:nowrap;
+  }
+  .tabnav a:hover, .tabnav a.active{
+    color:var(--stamp);
+    border-bottom-color:var(--stamp);
+  }
+
+  /* ---------- Cover / Hero ---------- */
+  .cover{
+    padding:88px 0 64px;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .folio{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    color:var(--ink-light);
+    text-transform:uppercase;
+    margin:0 0 28px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .folio::before{
+    content:"";
+    width:26px;height:1px;
+    background:var(--stamp);
+    display:inline-block;
+  }
+  .cover-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:40px;
+    align-items:start;
+  }
+  h1.name{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(40px,7vw,68px);
+    line-height:1.02;
+    margin:0 0 14px;
+    letter-spacing:-.01em;
+  }
+  .roles{
+    font-family:var(--mono);
+    font-size:13px;
+    letter-spacing:.06em;
+    color:var(--seal);
+    text-transform:uppercase;
+    margin:0 0 26px;
+  }
+  .roles span{color:var(--ink-light);}
+  .profile-text{
+    max-width:52ch;
+    font-size:16.5px;
+    color:var(--ink-light);
+    margin:0 0 30px;
+  }
+  .contact-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    font-family:var(--mono);
+    font-size:12.5px;
+  }
+  .contact-row a{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    text-decoration:none;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink);
+    padding:9px 16px;
+    border-radius:3px;
+    letter-spacing:.03em;
+    transition:border-color .2s ease, color .2s ease, background .2s ease;
+  }
+  .contact-row a:hover{border-color:var(--stamp);color:var(--stamp);background:#fff;}
+  .contact-row a .ico{font-size:13px;}
+
+  /* Stamp seal */
+  .seal{
+    width:132px;height:132px;
+    border:1.5px solid var(--stamp);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    transform:rotate(-9deg);
+    color:var(--stamp);
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    padding:10px;
+    flex-shrink:0;
+    position:relative;
+    opacity:.92;
+  }
+  .seal::before{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px solid var(--stamp);
+    border-radius:50%;
+  }
+  .seal b{
+    display:block;
+    font-family:var(--serif);
+    font-size:15px;
+    letter-spacing:.02em;
+    margin:4px 0;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:36px;
+  }
+  .sec-num{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--stamp);
+    letter-spacing:.08em;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:28px;
+    margin:0;
+    letter-spacing:-.01em;
+  }
+  .sec-line{
+    flex:1;
+    height:1px;
+    background:var(--line);
+    align-self:center;
+  }
+
+  /* ---------- Skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .skill-block h3{
+    font-family:var(--mono);
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--ink-light);
+    margin:0 0 16px;
+  }
+  .skill-list{list-style:none;margin:0;padding:0;}
+  .skill-list li{
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:12px;
+    font-size:14.5px;
+  }
+  .skill-list li:last-child{border-bottom:1px solid var(--line);}
+  .skill-list .idx{
+    font-family:var(--mono);
+    color:var(--stamp);
+    font-size:12px;
+    flex-shrink:0;
+    padding-top:1px;
+  }
+
+  /* ---------- Experience ---------- */
+  .job{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:28px;
+    margin-bottom:44px;
+  }
+  .job:last-child{margin-bottom:0;}
+  .job-period{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--ink-light);
+    padding-top:3px;
+  }
+  .job-org{
+    font-family:var(--serif);
+    font-size:20px;
+    font-weight:600;
+    margin:0 0 3px;
+  }
+  .job-role{
+    font-family:var(--mono);
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--seal);
+    margin:0 0 14px;
+  }
+  .job ul{
+    margin:0;
+    padding-left:18px;
+    font-size:14.5px;
+    color:var(--ink-light);
+  }
+  .job ul li{margin-bottom:7px;}
+  .job ul li::marker{color:var(--stamp);}
+
+  /* ---------- Projects dossier index ---------- */
+  .dossier{
+    border:1px solid var(--line);
+    background:var(--card);
+  }
+  .dossier-row{
+    display:grid;
+    grid-template-columns:56px 1fr 130px;
+    gap:16px;
+    align-items:center;
+    padding:14px 18px;
+    border-bottom:1px solid var(--line);
+    transition:background .15s ease;
+  }
+  .dossier-row:last-child{border-bottom:none;}
+  .dossier-row:hover{background:var(--paper-deep);}
+  .dossier-no{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--stamp);
+  }
+  .dossier-name{font-size:14.5px;}
+  .dossier-client{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-light);
+    text-align:right;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+  }
+
+  /* ---------- Certifications ---------- */
+  .cert-year{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--stamp);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin:0 0 14px;
+  }
+  .cert-year:not(:first-child){margin-top:32px;}
+  .cert-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .cert-card{
+    border:1px solid var(--line);
+    background:var(--card);
+    padding:16px 18px;
+    font-size:14px;
+    position:relative;
+  }
+  .cert-card .provider{
+    font-family:var(--mono);
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--seal);
+    display:block;
+    margin-bottom:6px;
+  }
+  .cert-badge{
+    position:absolute;
+    top:14px;right:14px;
+    width:26px;height:26px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--gold);
+    font-family:var(--serif);
+    font-size:13px;
+  }
+
+  /* ---------- Education ---------- */
+  .edu-card{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:20px;
+    align-items:center;
+    border:1px solid var(--line);
+    background:var(--card);
+    padding:24px 26px;
+  }
+  .edu-card h3{
+    font-family:var(--serif);
+    font-size:19px;
+    margin:0 0 4px;
+  }
+  .edu-card p{
+    margin:0;
+    font-size:13.5px;
+    color:var(--ink-light);
+  }
+  .edu-card p + p{
+    margin-top:4px;
+    font-family:var(--mono);
+    font-size:12px;
+  }
+  .gpa-tag{
+    font-family:var(--mono);
+    font-size:12px;
+    border:1px solid var(--seal);
+    color:var(--seal);
+    padding:6px 12px;
+    white-space:nowrap;
+  }
+  .non-formal{
+    margin-top:16px;
+    font-size:13.5px;
+    color:var(--ink-light);
+    font-family:var(--mono);
+  }
+.edu-card p{
+    margin-bottom: 15px;
+    .doc-link{
+    display: block;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+}
+
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:48px 0 60px;
+    text-align:center;
+  }
+  footer .sig{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:20px;
+    margin-bottom:10px;
+  }
+  footer .meta{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--ink-light);
+    letter-spacing:.05em;
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:720px){
+    .container{padding:0 20px;}
+    .cover{padding:56px 0 40px;}
+    .cover-grid{grid-template-columns:1fr;}
+    .seal{transform:rotate(-6deg);width:104px;height:104px;}
+    .skills-grid{grid-template-columns:1fr;gap:8px;}
+    .job{grid-template-columns:1fr;gap:6px;}
+    .dossier-row{grid-template-columns:36px 1fr;}
+    .dossier-client{grid-column:2;text-align:left;margin-top:2px;}
+    .cert-grid{grid-template-columns:1fr;}
+    .edu-card{grid-template-columns:1fr;text-align:left;}
+    .gpa-tag{justify-self:start;}
+  }
+
+  a:focus-visible, .tabnav a:focus-visible{
+    outline:2px solid var(--stamp);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <a href="#profil">01 Profile</a>
+    <a href="#keahlian">02 Skills</a>
+    <a href="#pengalaman">03 Experience</a>
+    <a href="#proyek">04 Projects</a>
+    <a href="#sertifikasi">05 Certifications</a>
+    <a href="#pendidikan">06 Education</a>
+    <a href="#othert">07 Others</a>
+  </div>
+</nav>
+
+<header class="cover container">
+  <p class="folio">Professional Portfolio - 2026 Edition</p>
+  <div class="cover-grid">
+    <div>
+      <h1 class="name">Eva Murtiawani</h1>
+      <p class="roles">Project Administrator <span>·</span> Manual QA Tester <span>·</span> Technical Writer</p>
+      <p class="profile-text"></p>
+      <div class="contact-row">
+        <a href="mailto:evamurtia@gmail.com"><span class="ico">✉</span>Email</a>
+        <a href="tel:082258543215"><span class="ico">☎</span>Phone</a>
+        <a href="https://wa.me/6282258543215"><span class="ico">💬 | Chat</span>Whatsapp</a>
+        <a href="https://linkedin.com/in/evamurtia" target="_blank" rel="noopener"><span class="ico">in</span>LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="profil">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Summary</h2><span class="sec-line"></span></div>
+    <p class="profile-text" style="max-width:64ch; text-align: justify;">A detail-oriented and adaptable professional with over four years of experience since 2021 in project administration, project support, and technical documentation within enterprise environments. Experienced in preparing project documents such as BAST, BAPL, and BAPP, as well as technical documentation including User Guides and Test Cases. Skilled in supporting application testing and collaborating with Business Analysts, Developers, Project Managers, and end users to ensure successful project implementation. Strong analytical abilities, excellent attention to detail, and a proven ability to adapt quickly to dynamic project environments.</p>
+  </section>
+
+  <section id="keahlian">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Skills</h2><span class="sec-line"></span></div>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h3>Technical Skills</h3>
+        <ul class="skill-list">
+          <li><span class="idx">01</span>Technical Documentation</li>
+          <li><span class="idx">02</span>Software Testing</li>
+          <li><span class="idx">03</span>User Acceptance Testing (UAT)</li>
+          <li><span class="idx">04</span>Bug Reporting</li>
+          <li><span class="idx">05</span>Application &amp; User Support</li>
+          <li><span class="idx">06</span>Requirements Documentation (BRD, User Guide, UAT)</li>
+          <li><span class="idx">07</span>Microsoft Office (Excel, Word, PowerPoint)</li>
+          <li><span class="idx">08</span>Google Workspace</li>
+          <li><span class="idx">09</span>Data Entry &amp; Data Management</li>
+          <li><span class="idx">10</span>Administrative Support</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h3>Soft Skill</h3>
+        <ul class="skill-list">
+          <li><span class="idx">01</span>Attention to Detail</li>
+          <li><span class="idx">02</span>Analytical Thinking</li>
+          <li><span class="idx">03</span>Problem Solving</li>
+          <li><span class="idx">04</span>Effective Communication</li>
+          <li><span class="idx">05</span>Stakeholder Coordination</li>
+          <li><span class="idx">06</span>Cross-Functional Collaboration</li>
+          <li><span class="idx">07</span>Time Management</li>
+          <li><span class="idx">08</span>Adaptability</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="pengalaman">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Work Experience</h2><span class="sec-line"></span></div>
+
+    <div class="job">
+      <div class="job-period">2021 — Present</div>
+      <div>
+        <h3 class="job-org">PT Sigma Cipta Caraka</h3>
+        <p class="job-role">Project Administrator</p>
+        <ul>
+          <li>Managed project administration documents and billing requirements, including BAPL, BAPP, BAST, BAUT, and other related documentation.</li>
+          <li>Reviewed service contracts and coordinated with Account Managers (AM) and the PMO team to ensure contract compliance.</li>
+          <li>Prepared meeting minutes (MoM) and documented follow-up actions from meetings.</li>
+          <li>Created and managed Customer Order (CO) and Purchase Order (PO) through the MIS system.</li>
+          <li>Coordinated with Telkom, Project Manager, and Account Manager to ensure project documentation is complete and up-to-date.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-period">2021 — Present</div>
+      <div>
+        <h3 class="job-org">PT Sigma Cipta Caraka</h3>
+        <p class="job-role">Technical Writer / Tester</p>
+        <ul>
+          <li>Prepared system documentation, including Business Requirement Documents (BRD), User Guides, and User Acceptance Testing (UAT) documentation.</li>
+          <li>Executed System Integration Testing (SIT) and User Acceptance Testing (UAT) to ensure the system meets business and user requirements.</li>
+          <li>Developed test cases, executed system testing, and documented testing results.</li>
+          <li>Created and managed bug reports in collaboration with the development team for analysis and resolution of system issues.</li>
+          <li>Collaborated with Business Analysts, Project Managers, and Technical Leads regarding system requirements and feature development.</li>
+          <li>Delivered training on the KPI Module to 65 participants and supported training on the ITMS Module for over 100 participants.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job">
+      <div class="job-period">2017 — 2021</div>
+      <div>
+        <h3 class="job-org">PT Felix Auto Service</h3>
+        <p class="job-role">Administration Staff</p>
+        <ul>
+          <li>Prepared vehicle repair invoices and verified the completeness of supporting documentation.</li>
+          <li>Monitored accounts receivable (AR) and followed up on pending payments.</li>
+          <li>Coordinated with internal teams to ensure smooth vehicle repair processes and spare part availability.</li>
+          <li>Maintained accuracy in recording company cash transactions.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyek">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Project Experience - Summary</h2><span class="sec-line"></span></div>
+    <div class="dossier">
+      <div class="dossier-row"><span class="dossier-no">01</span><span class="dossier-name">Maintenance Support &amp; Perluasan Sistem Manajemen Distribusi Vaksin Covid-19</span><span class="dossier-client">Bio Farma</span></div>
+      <div class="dossier-row"><span class="dossier-no">02</span><span class="dossier-name">Jasa Layanan Active-Active Data Center</span><span class="dossier-client">Semen Indonesia</span></div>
+      <div class="dossier-row"><span class="dossier-no">03</span><span class="dossier-name">Pengadaan Penambahan Kapasitas Jasa Managed Service DRC</span><span class="dossier-client">Pupuk Indonesia</span></div>
+      <div class="dossier-row"><span class="dossier-no">04</span><span class="dossier-name">Pengadaan Pengembangan Aplikasi MyBirawa Telkom Property 2022</span><span class="dossier-client">Telkom Property</span></div>
+      <div class="dossier-row"><span class="dossier-no">05</span><span class="dossier-name">Aplikasi RUPST Tahun Buku 2021</span><span class="dossier-client">Telkom</span></div>
+      <div class="dossier-row"><span class="dossier-no">06</span><span class="dossier-name">Maintenance Aplikasi My Birawa (Security, TMS &amp; Eksternal) 2022–2023</span><span class="dossier-client">Telkom Property</span></div>
+      <div class="dossier-row"><span class="dossier-no">07</span><span class="dossier-name">Pengadaan Enhancement Talent Management Information &amp; Analytics (Tania)</span><span class="dossier-client">Bank BTN</span></div>
+      <div class="dossier-row"><span class="dossier-no">08</span><span class="dossier-name">Enhancement My Birawa Phase 2</span><span class="dossier-client">Telkom Property</span></div>
+      <div class="dossier-row"><span class="dossier-no">09</span><span class="dossier-name">Learning Management System (LMS Telkomsigma)</span><span class="dossier-client">Internal HC</span></div>
+      <div class="dossier-row"><span class="dossier-no">10</span><span class="dossier-name">Digipactum</span><span class="dossier-client">—</span></div>
+      <div class="dossier-row"><span class="dossier-no">11</span><span class="dossier-name">Dexter</span><span class="dossier-client">—</span></div>
+      <div class="dossier-row"><span class="dossier-no">12</span><span class="dossier-name">Jasa Langganan Integrated Talent Management System (ITMS)</span><span class="dossier-client">Airnav Indonesia</span></div>
+      <div class="dossier-row"><span class="dossier-no">13</span><span class="dossier-name">Renewal Maintenance Support SMDV</span><span class="dossier-client">Bio Farma</span></div>
+      <div class="dossier-row"><span class="dossier-no">14</span><span class="dossier-name">Pengadaan Penambahan Fitur Aplikasi HCIS, SPPD, Cuti &amp; Larisa</span><span class="dossier-client">Pegadaian</span></div>
+    </div>
+  </section>
+
+  <section id="sertifikasi">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Sertification &amp; Training</h2><span class="sec-line"></span></div>
+
+    <p class="cert-year">2025</p>
+    <div class="cert-grid">
+      <div class="cert-card"><span class="provider">Coursera · Google</span>Google Project Management — Professional Certificate<div class="cert-badge">✓</div></div>
+      <div class="cert-card"><span class="provider">MySkill</span>Automating with AI + n8n<div class="cert-badge">✓</div></div>
+      <div class="cert-card"><span class="provider">Coursera · Google</span>Prepare Data for Exploration<div class="cert-badge">✓</div></div>
+      <div class="cert-card"><span class="provider">Coursera · Google</span>Foundations: Data, Data, Everywhere<div class="cert-badge">✓</div></div>
+      <div class="cert-card"><span class="provider">Coursera · Yonsei University</span>First Step Korean<div class="cert-badge">✓</div></div>
+    </div>
+
+    <p class="cert-year">2024</p>
+    <div class="cert-grid">
+      <div class="cert-card"><span class="provider">MySkill</span>QA Test Technique<div class="cert-badge">✓</div></div>
+      <div class="cert-card"><span class="provider">MySkill</span>Quality Assurance Introduction<div class="cert-badge">✓</div></div>
+      <div class="cert-card"><span class="provider">Great Learning</span>Software Testing Tutorial<div class="cert-badge">✓</div></div>
+    </div>
+
+  </section>
+
+  <section id="pendidikan">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Education</h2><span class="sec-line"></span></div>
+
+    <p class="cert-year">Formal</p>
+    <div class="edu-card">
+      <div>
+        <h3>Bina Sarana Informatika University</h3>
+        <p>Information Systems — Jakarta, Indonesia</p>
+        <p>September 2018 – Agustus 2021</p>
+      </div>
+      <span class="gpa-tag">GPA: 3.73</span>
+    </div>
+
+    <p class="cert-year">Non-Formal</p>
+    <div class="edu-card">
+      <div>
+        <h3>Beijing Standard</h3>
+        <p>Mandarin Language Course, HSK1 Online</p>
+        <p>April 2026 – Sekarang</p>
+      </div>
+      <span class="gpa-tag">学生</span>
+    </div>
+  </section>
+
+ <section id="othert">
+  <div class="sec-head">
+    <span class="sec-num">07</span>
+    <h2>Others</h2>
+    <span class="sec-line"></span>
+  </div>
+
+  <p class="cert-year">Supporting Documents</p>
+  <div class="edu-card">
+    <a class="doc-link" href="https://drive.google.com/file/d/1HZGTFlSkJ96NQ9CDyMgOJ9bB3xKN5TC8/view?usp=sharing">
+        📄 View CV
+    </a>
+    <br><br>
+    <a class="doc-link" href="......">
+        📕 Download Portfolio (PDF)
+    </a>
+</div>
+</section>
+
+
+
+</main>
+
+<footer>
+  <p class="sig">Eva Murtiawani</p>
+  <p class="meta">Professional Portfolio - 2026 Edition</p>
+  <p class="meta">Project Support • Technical Documentation • Manual QA Testing</p>
+  <p class="meta">Last Updated • <span id="lastUpdated"></span></p>
+  
+<script>
+const options = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+};
+
+document.getElementById('lastUpdated').textContent =
+    new Date(document.lastModified).toLocaleDateString('en-US', options);
+</script>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('section, .cover');
+  revealEls.forEach(el => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  revealEls.forEach(el => io.observe(el));
+
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.tabnav a');
+  const navIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = document.querySelector('.tabnav a[href="#' + entry.target.id + '"]');
+      if(!link) return;
+      if(entry.isIntersecting) navLinks.forEach(l => l.classList.remove('active')), link.classList.add('active');
+    });
+  }, { rootMargin: '-40% 0px -50% 0px' });
+  sections.forEach(s => navIO.observe(s));
+</script>
+
+</body>
+</html>
